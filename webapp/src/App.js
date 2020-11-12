@@ -33,46 +33,46 @@ class App extends React.Component {
     };
   }
 
-  render() {
-    return (
-      <Wrapper>
-        <ThemeContext.Provider value={this.state}>
-          <ThemeProvider theme={this.state.theme}>
-            <Router>
-              <AppContent p={4}>
-                <Header>
-                  <LinkWrapper to="/">
-                    <Logo color={'logo'} fontSize={60}>
-                      MUNCHIES
-                    </Logo>
-                    <StyledBox color={'logo'} fontSize={30}>
-                      ! hungry
-                    </StyledBox>
-                  </LinkWrapper>
-                  <ThemeContext.Consumer>
-                    {({ theme, toggleTheme }) => (
-                      <StyledBox mb={4} mr={4} onClick={toggleTheme} style={{ position: 'absolute', right: 0 }}>
-                        <StyledThemeModeButton variant="contained">
-                          <StyledBox color={'white'}>{this.state.themeString}</StyledBox>
-                        </StyledThemeModeButton>
-                      </StyledBox>
-                    )}
-                  </ThemeContext.Consumer>
-                </Header>
-                <Switch>
-                  <Route path="/food/:foodId" component={FoodDetail} />
-                  <Route path="/createFood/:foodId?" component={FoodEditor} />
-                  <Route path="/">
-                    <Home color={this.state.theme} />
-                  </Route>
-                </Switch>
-              </AppContent>
-            </Router>
-          </ThemeProvider>
-        </ThemeContext.Provider>
-      </Wrapper>
-    );
-  }
+	render() {
+		return (
+			<Wrapper>
+				<ThemeContext.Provider value={this.state}>
+					<ThemeProvider theme={this.state.theme}>
+						<Router>
+							<AppContent p={4}>
+								<Header>
+									<LinkWrapper to="/">
+										<Logo color={'logo'} fontSize={60}>
+											MUNCHIES
+										</Logo>
+										<StyledBox color={'subLogo'} fontSize={30}>
+											! hungry
+									</StyledBox>
+									</LinkWrapper>
+									{/* <ThemeContext.Consumer>
+										{({ theme, toggleTheme }) => (
+											<StyledBox mb={4} mr={4} onClick={toggleTheme} style={{ position: 'absolute', right: 0 }}>
+												<StyledThemeModeButton variant="contained">
+													<StyledBox color={'white'}>{this.state.themeString}</StyledBox>
+												</StyledThemeModeButton>
+											</StyledBox>
+										)}
+									</ThemeContext.Consumer> */}
+								</Header>
+								<Switch>
+									<Route path="/food/:foodId" component={FoodDetail} />
+									<Route path="/createFood/:foodId?" component={FoodEditor} />
+									<Route path="/">
+										<Home color={this.state.theme} />
+									</Route>
+								</Switch>
+							</AppContent>
+						</Router>
+					</ThemeProvider>
+				</ThemeContext.Provider>
+			</Wrapper>
+		);
+	}
 }
 // TODOS: Design dark/light mode button
 const StyledThemeModeButton = styled(Button)`
